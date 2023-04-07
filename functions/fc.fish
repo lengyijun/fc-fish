@@ -46,6 +46,14 @@ function fc --description 'Edit the command history list in EDITOR'
         return 0
     end
 
+    if test $argv[1] -eq 0
+      set argv[1] -1
+    end
+
+    if test $argv[2] -eq 0
+      set argv[2] -1
+    end
+
     commandline -r -- $history[(math -$argv[1])..(math -$argv[2])]
     edit_command_buffer
 end
